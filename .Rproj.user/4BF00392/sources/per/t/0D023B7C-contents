@@ -1,0 +1,27 @@
+project: 
+  type: book
+  output-dir: docs
+
+book:
+  title: "Veldig praktisk dataanalyse med R"
+  subtitle: "Oppgaver til hver undervisningsuke"
+  author: "Torbjørn Skardhamar"
+  date: today
+  version: 0.1
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - surveyData.qmd
+#     - references.qmd
+# 
+# bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    code-fold: false
+    code-tools: true
+
+# På kontormaskinen må jeg kjøre denne først: 
+# Sys.setlocale(locale='no_NB.utf8')
+
