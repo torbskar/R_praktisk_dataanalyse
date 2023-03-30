@@ -3,6 +3,8 @@ project:
   output-dir: docs
 
 book:
+  navbar:
+    search: true
   title: "Veldig praktisk dataanalyse med R"
   subtitle: "Oppgaver til hver undervisningsuke"
   author: "Torbjørn Skardhamar"
@@ -11,16 +13,35 @@ book:
   page-navigation: true
   chapters:
     - index.qmd
-    - surveyData.qmd
+    - regsjonsanalyse_tolkning.qmd
+    - innlesning_data.qmd
+    - innlesning_stata.qmd
+    - oversikt_datasettet.qmd
+    #- innlesning_ssb.qmd
+    - grafikk.qmd
+    - deskriptive_tabeller.qmd
+
+    - omkode_factor.qmd
 #     - references.qmd
 # 
 # bibliography: references.bib
 
+  appendices:
+   - omkode_labelled.qmd
+
+
 format:
   html:
     theme: cosmo
-    code-fold: false
-    code-tools: true
+    toc: true
+    toc-depth: 2
+    # code-fold: false
+    # code-tools: false
+    
+  # pdf:
+  #   toc: true
+  #   toc-depth: 2
+  #   documentclass: scrreprt
 
 # På kontormaskinen må jeg kjøre denne først: 
 # Sys.setlocale(locale='no_NB.utf8')

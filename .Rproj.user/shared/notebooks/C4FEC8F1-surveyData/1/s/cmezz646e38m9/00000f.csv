@@ -1,5 +1,0 @@
-"0","norlag <- read_stata(""data/norlag_panel2022.dta"") 
-"
-"2","Error in read_stata(""data/norlag_panel2022.dta"") : 
-  could not find function ""read_stata""
-"

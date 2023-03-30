@@ -1,0 +1,93 @@
+# Omkoding av labelled-variable i innlesning fra Stata
+
+
+I tillegg skal vi bruke pakker for generell datahåndtering som er samlet i pakken {tidyverse}, deriblant en pakke {forcats} for håndtering av kategoriske variable. 
+```{r}
+#| message: false 
+#| warning: false
+library(tidyverse)   # Generelle funksjoner for datahåndtering
+library(forcats)     # Funksjoner spesielt for factor-variable
+```
+
+
+I dette kapittelet skal vi bruke følgende pakker:
+
+```{r }
+#| warning: false
+#| message: false
+library(haven)       # Importere data fra SAS, SPSS og Stata
+library(tidyverse)   # Pakker for generell datahåndtering og grafikk
+library(labelled)    # Håndtering av variable med labler, importert fra annen software
+library(forcats)     # Lettere omkoding av faktorvariable
+
+```
+
+
+Det er fult mulig å jobbe med data som inneholder labler og gjøre omkodinger basert på dette. Omkoding av variable avhenger av hva slags type variable det er, så man må gjøre det på en litt annen måte når det er snakk om labler. 
+
+Mitt anbefaling vil da være å gjøre all omkoding tidlig i scriptet
+
+Når man leser inn data som inkluderer labler kan man velge å omkode disse med en gang før man gjør om til factor-variable. 
+
+I så fall kan det gjøres etter mønster som i følgende kode. Eller man kan vente til man har gjort om til factor-variable som forklares noe senere i dette dokumentet. 
+
+```{r}
+#| message: false 
+#| warning: false
+norlag <- read_stata("data/norlag_panel2022.dta") %>% 
+    mutate(across( where(is.labelled) ,  ~replace(., 
+                                        . %in% c(997, 998, 999, 99999, 999999), 
+                                        NA))) %>%
+  # For hele datasettet fjernes ikke-brukte labler 
+  drop_unused_value_labels()  
+
+```
+
+
+
+Så kan du gjøre andre analyser etter dette. Hvis du trenger å gå tilbake for å omkode flere labelled-variable, så legges dette til i mutate-setningen over. Det er lurt å gjøre all den typen omkoding ett sted, slik at du får et datasett som er ferdig ryddet og klart til andre analyser. 
+
+
+
+
+
+La oss si at vi det er mindre viktig om man har det romslig eller veldig romslig. Det er heller ikke så viktig å skille mellom de som 'problemer' og de som har det 'svært vanskelig'. Da ønsker vi å slå sammen disse kategoriene. 
+
+For å omkode en variabel som har labler kan vi bruke `recode()`. Det gjør vi typisk innenfor en mutate-setning. 
+
+* Første linje sier at det skal lages en ny variabel, som er en rekodet variant av he104
+* Andre linje sier at alle med verdien 1 skal gjøres om til verdien 2
+* Tredje linje sier at alle med verdien 5 skal gjøres om til verdien 4
+
+Legg merke til at den opprinneligve verdien angis innenfor apostrof `1`, mens den nye verdien ikke skal angis med apostrof. 
+
+```{r}
+#| message: false 
+#| warning: false
+norlag %>% 
+  mutate(okonomi = recode(he104, 
+                          `1` = 2 ,
+                          `5` = 4) ) %>% 
+  select(okonomi) %>% 
+  memisc::codebook()
+```
+
+Legg merke til at de opprinnelge lablene fremdeles er der, men to av kategoriene har nå null observasjoner. Det innebærer jo også at lablene er litt misvisende, for det er jo egentlig kombinasjoner. 
+
+Å omkode lablene kan også gjøres. Funksjonen *add_value_labels()* angir hvilken variabel lablene skal angis for, og så settes ny label og hvilken verdi det tilsvarer. Lablene for verdier som ikke er nevnt blir beholdt slik de er. 
+
+```{r}
+#| message: false 
+#| warning: false
+norlag %>% 
+  mutate(he104 = recode(he104, 
+                          `1` = 2 ,
+                          `5` = 4,
+                        .combine_value_labels = TRUE) ) %>% 
+  select(he104) %>% 
+  add_value_labels(he104 = c("Romslig/veldig romslig" = 2, 
+                             "Problemer/store problemer" = 4)) %>% 
+  memisc::codebook()
+
+```
+

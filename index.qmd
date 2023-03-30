@@ -1,7 +1,18 @@
 # Forord {.unnumbered}
 
 
+Dette notatet er ment som en praktisk innføring i bruk av R til en del vanlige problemstillinger som studenter ofte kommer borti når man jobber med data. Teksten er ment som en ganske grunnleggende innføring for praktikere. Fokuset er å vise løsninger som funker uten for mye mikk-makk. 
 
+Det er alltid flere måter å gjøre ting på, og noen undervisere eller studenter foretrukket om man valgte en annen løsning. Noen alternativer er dekket i appendix. Hovedteksten dekker altså mine anbefalinger. Mine anbefaleinger kan være basert på flere typer hensyn slik som effektivitet, konsistens med andre løsninger og funksjonalitet. 
+
+Men dette dokumentet er også ment som et oppslagsverk slik at man lett skal kunne finne det man leter etter. 
+
+## Tolkning og teori
+Jeg har inkludert et innledende kapittel om statistikk og substansiell teori. Dette virker kanskje litt rart å ta inn i et slikt notat, men har en begrunnelse i at studenter lett får et rent teknisk forhold til statistikk og mister lett blikket for hvordan det skal brukes til noe substansielt. Det samme gjelder hvilken rolle det spiller for tolkning hvordan dataene ble til. Dette kapittelet har altså som funksjon å synliggjøre noen mer prinsippielle perspektiver på dataanalyse og hvordan det skal brukes. 
+
+Dette kapittelet er inkludert først og fremst fordi det ofte ikke er fremstilt på denne måten i lærebøker. Jeg støtter meg på andres arbeid her, men setter det sammen i en mer samlet fremstilling. 
+
+## Hvorfor R, egentlig? 
 
 
 

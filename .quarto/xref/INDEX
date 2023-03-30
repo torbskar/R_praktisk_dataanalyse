@@ -7,5 +7,32 @@
   },
   "references.qmd": {
     "references.html": "dba49bfe"
+  },
+  "omkode_labelled.qmd": {
+    "omkode_labelled.html": "c24e9d42"
+  },
+  "omkode_factor.qmd": {
+    "omkode_factor.html": "6f329458"
+  },
+  "grafikk.qmd": {
+    "grafikk.html": "929ae178"
+  },
+  "deskriptive_tabeller.qmd": {
+    "deskriptive_tabeller.html": "5e3f03cf"
+  },
+  "innlesning_stata.qmd": {
+    "innlesning_stata.html": "f1c5a3d8"
+  },
+  "oversikt_datasettet.qmd": {
+    "oversikt_datasettet.html": "82a1c298"
+  },
+  "innlesning_data.qmd": {
+    "innlesning_data.html": "e410a7de"
+  },
+  "innlesning_ssb.qmd": {
+    "innlesning_ssb.html": "22cd3b08"
+  },
+  "regsjonsanalyse_tolkning.qmd": {
+    "regsjonsanalyse_tolkning.html": "1854120c"
   }
 }

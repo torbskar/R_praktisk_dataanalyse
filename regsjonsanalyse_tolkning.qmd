@@ -1,0 +1,174 @@
+# Sosiologisk teori og regresjonsanalyse
+
+Hovedpunkter:
+
+-   Berk's tre nivåer av regresjonanalyse - og det fjerde
+-   Policy implications
+-   Teori: fremover og bakover teoretisering / eksplorerende og konfirmerende
+-   Severe testing - egenskap ved teori, ikke med type metode
+
+## Hva er regresjon?
+
+Enhver lærebok vil kunne gi en teknisk forklaring på hva regresjonsanalyse er, men det er verd å ta et litt mindre teknisk perspektiv i dette kapittelet.
+
+En regresjonsmodell er typisk på formen
+
+$$ f(y) = g(x) $$ der altså utfallsvariabelen, $y$, er en funksjon av en eller flere forklaringsvariable, $x$. Denne funksjonen av $x$ vil ofte ha en lineær spesifikasjon av typen \$ g(x) = \alpha + \beta X + \epsilon\$, men kan også være ikke-lineær på ulikt vis eller inneholde en rekke ekstra og kompliserende ledd.
+
+Det viktige her er at en regresjonsmodell - uansett hvilke statistiske krumspring som ellers gjøres - først og fremst beskriver hvordan utfallsvariabelen $y$ varierer med prediktorene $x$. Vi kan også kalle dette den betingede fordeling av $y$. Oftest er det hvordan *gjennomsnittet* av $y$ som beskrives.
+
+Dermed er også en regresjonsmodell av denne typen en *oppsummering* av noen hovedtrender i dataene. Regresjonsparametrene $\beta$ beskriver disse trendene, først og fremst hvor mye $y$ endrer seg når $x$ endrer seg. For kategoriske $x$ kan man si at $\beta$ beskriver forskjell i $y$ mellom gruppene i $x$.
+
+Det er ikke så mye mer, egentlig. Det er ingenting i det tekniske ved regresjonsanalysen som sier noe som helst om *effekter*. Det er heller ingenting i dette som sier noe om hvorvidt resultatene *generaliserer* til andre data eller settinger. Hvorvidt disse tolkningene er rimelige (effekter eller generalisering) avhenger av hvordan dataene ble til. Eller sagt på en annen måte: tolkningen avhenger av hva som var forskningsdesignet i utgangspunktet.
+
+Uansett hvilke data man analyserer kan man gjøre regneøvelser om standardfeil og teste signifikans osv. Standard lærebøker vil presentere dette som hypotesetesting der man først formulerer en null-hypotese og en alternativ hypotese, så gir f.eks. en t-test svaret på hvilken av disse man bør velge. Denne formen for hypotesetesting er imidlertid *ikke* i seg selv en test av substansiell teori (f.eks. sosiologisk teori) på noen meningsfull måte. For at en statistisk test av en regresjonsparameter skal være informativ om substansiell teori må medfølge en *teoretisk argument* om hvorfor akkurat denne parameteren er informativ. Sagt på en annen måte: det kreves informasjon fra *utenfor data* som gir resultatet mening.
+
+Vi står altså i en situasjon der tolkningen av data i moderat grad er avhengig av data, men av informasjon utenfor data.
+
+## Tre nivåer av regresjonanalyse
+
+Richard Berk beskriver i sin lærebok tre nivåer av regresjonsanalyse basert på hvordan dataene ble til. Dette er et godt utgangspunkt som burde klargjøre betydelig, i hvert fall som et først skritt.
+
+### Nivå I: Ikke tilfeldig utvalg fra en veldefinert populasjon
+
+Grunnlaget for statistisk tolkning (sannsynligheter, p-verdier og sånn) er at dataene er en tilfeldig realisering av en underliggende sann verdi. Typisk betyr dette bare at man har trukket et tilfeldig utvalg fra en populasjon. Da vil man få et godt mål på f.eks. gjennomsnittsverdi i populasjonen, men på grunn av tilfeldighet vil det være en feilmargin på denne målingen.
+
+Det avgjørende er altså at det finnes en veldefinert populasjon som det kan generaliseres til. Grunnen til å bruke begrepet *veldefinert* er at det må være rimelig spesifisert.
+
+Hvis dataene *ikke* er fra en veldefinert populasjon kalles dette noen ganger for *convenience sample*. Altså, at man gjorde et uttrekk av beleilighetsgrunner, men uten at det var en veldefinert populasjon.
+
+Et eksempel kan være en arbeidsmiljøundersøkelse i en bestemt bedrift. Det skal litt til at disse resultatene skal gjelde utover denne bedriften. Man kan selvsagt argumentere for at erfaringene gjelder med generelt, men en slik slutning vil da hvile først og fremst på disse argumentene - ikke på statistiske utregninger.
+
+Det kan være veldig nyttig å analysere slike data, og det kan bringe innsikt og kunnskaper. Men med slike data gir det ikke mye mening å regne på statistisk usikkerhet. Hvis man ikke skal si noe utover de dataene man har (ikke generalisere), så er det heller ikke denne typen usikkerhet i målingene.
+
+Slike ikke-tilfeldige utvalg kan betraktes nærmest som case-studier. En dataanalyse vil gi oss kunnskaper om de erfaringene som gjøre akkurat der. Størrelsen på datasettet kan gi oss mer pålitelig informasjon om dette caset, men hjelper ikke for å generalisere utover caset.
+
+### Nivå II: Tilfeldig utvalg fra en veldefinert populasjon
+
+### Nivå III: Estimering av kausale effekter
+
+Fra et teknisk perspektiv er det ingenting som skiller studier av eksperimenter fra observasjonsstudier. De samme regresjonsmodellene kan estimeres og de samme utregningene av usikkerhet. Hva som bestemmer tolknigen (og hvorvidt modellspesifikasjonen er rimelig etc) avhenger av forskningsdesignet. Kort sagt kreves det et eksperiment. Hvis man har en *treatment*-gruppe og en kontrollgruppe, så vil $\beta$ beskrive forskjellen mellom disse gruppene som i andre typer data. Det som gir $\beta$ en *kausal* tolkning er om dataene tilfredsstiller kravene til et eksperiment.
+
+### Oppsummerende og et nivå IV:
+
+I Berk sin fremstilling av de tre nivåene får man en følelse av at den vitenskapelige verdien øker ved hvert nivå. Mange vil da også mene akkurat det. Men logisk sett er det litt mer tvetydig enn som så.
+
+Vi har snakket om to dimensjoner: kausalitet (ja/nei) og generalisering (ja/nei). Dette gir fire logisk mulige kombinasjoner.
+
+```{=html}
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+```
+|            | Ikke tilfeldig utvalg fra veldefinert populasjon | Tilfeldig utvalg fra veldefinert populasjon |
+|------------------|----------------------------|--------------------------|
+| Deskriptiv | Overraskende mange                               | Det aller meste                             |
+| Kausal     | Mye, men burde nok vært mer                      | Ganske sjelden                              |
+
+: Nivåer av regresjonsanalyse og hvor vanlige de er {#tbl-}
+
+Jeg har ingen empiri for å si hvor vanlig hver enkelt type analyse er. Men jeg tror det nokså omtrentlige angivelsen i tabellen er ganske riktig, basert på egen erfaring fra studier jeg har lest og presentasjoner jeg har sett.
+
+I Berk sin fremstilling er Nivå III hele nederste rad, men da er det altså ikke gjort skille mellom om resultatene kan generaliseres videre eller ikke. Et slik skille bør man nok gjøre.
+
+Eksperimenter omtales noen ganger - og i noen fagmiljøer - som *gullstandarden*. Men altså: ethvert eksperiment kan ikke være en gullstandard, ikke engang når formålet er å estimere kausaleffekter. Nivå IV er i så fall det vi ser etter, og ikke nivå III.
+
+
+### Estimere effekter og forklare sammenhenger
+Mange diskusjoner om kvantitative metoder og hva som er godt og dårlig ender opp i en diskusjon om kausalitet, og da spesifikt i rammeverket som har utgangspunkt i et kontrafaktisk perspektiv. Man sammenligner det som har skjedd med det som ville skjedd hvis noe annet ikke hadde skjedd. Det er altså den eksperimentelle metode, inkludert kvasi-eksperimentelle design.  
+
+Merk at i det ovenstående er det understreket at det er *hvordan dataene har blitt til* som er bestemmende for hvordan resultatene kan tolkes. For at et *estimat* skal tolkes kausalt kreves det et eksperiment. Dette burde egentlig være ukontroversielt. 
+
+Det som av noen blir omtalt som *kontrollvariabelmetoden* er en dårlig erstatning for et kausalt design. Logikken er at man kan eliminere betydningen av andre observerte kjennetegn (dvs variable), så kan den gjenstående "effekten" i hvert fall ikke skyldes seleksjon på de variablene man har kontrollert for. Dette leder lett til å tro at hvis man bare kontrollerer for så mye som mulig, så kommer man stadig nærmere en kausal effekt. 
+
+Det nokså åpenbare problemet med en slik strategi er at det finnes en uendelig mengde faktorer det kan være seleksjon på, og den gjenstående "effekten" kan fremdeles være spuriøs. *Kontrollvariabelmetoden* er altså en dårlig strategi hvis man ønsker et kausalt estimat. Det man derimot kan gjøre - med hell - er å *beskrive* noen sammenhenger og utelukke noen alternative forklaringer. Hvorvidt dette er en god strategi vil da avhenge av det teoretiske argumentet som begrunner analysen. 
+
+Men det er ikke alltid målet er *estimere* en effekt selv om den underliggende interessen er i en effekt. Man kan ha en *teori* som forklarer hvordan $X$ påvirker $Y$ uten at en kausal faktor lar seg estimere direkte. Eller i hvert fall ikke med de dataene man har. Dette er noe annet enn statistisk tolkning, men er en substansiell tolkning som går utover det data kan si i seg selv. Det man kan oppnå er å si om data er *konsistent* med teorien, eller om man kan *avvise* teorien, eller *sannsynliggjøre* teorien. 
+
+
+## To nivåer av teoretisering: bakover og forover 
+Gelman & ... diskuterer kausaleffekter spesifikt, men argumentet gjelder mer generelt: 
+
+
+### Bakover: Hvordan kan det ha seg??
+Noen ganger er utgangspunktet et empirisk fenoment og man søker forklaring på hvordan det kan ha seg at det ble slik. Utfallet er altså allerede gitt og jobben må bestå i å nøste seg bakover for å finne en forklaring på hvorfor det ble slik. 
+
+
+### Forover: Hva skjer hvis...??  
+Noen ganger er spørsmålet mer om hva som skjer hvis man endrer på forholdene. Dette er normalsituasjonen for enhver byråkrat eller politiker som skal iverksette noe - som de jo håper løser et problem eller gjør noe bedre. Det finnes da ingen vei utenom enn å gjøre endringen og undersøke hva som skjer. Forskerens jobb er da å estimere effekten på en slik måte at man kan utelukke at endringen skyldes helt andre ting. 
+
+
+
+
+## Substansiell teori - er det gjort en *test*?
+
+Man ser ganske ofte både studentarbeider og vitenskapelige publikasjoner som setter opp formelle hypoteser om hva de forventer å finne. Gjerne skrives det på formen
+
+::: {#-}
+$H_1$: Det er en positiv sammenheng mellom $X$ og $Y$.\
+::: 
+
+::: {#-}
+$H_2$: Sammenheng mellom $X$ og $Y$ er sterkere for gruppe $Z_1$ enn gruppe $Z_2$.
+::: 
+
+Dette ligner tilforlatelig på slik man lærer å sette opp null-hypoteser og alternative hypoteser i standard kurs i statistikk. Hvis null-hypotesen ikke er oppgitt, så er det implisitt at det ikke er en slik sammenheng - altså negasjonen. 
+
+Dette er greit nok og er en tydeliggjøring av de forventningene forskeren har. Men det er *ikke* i seg selv en test av substansiell teori. For å skjønne dette må vi ta en liten runde på hva det vil si å teste en teori. 
+
+
+
+### Severe testing 
+Mayo viser til det Popperske perspektivet på falsifisering. Logisk sett er det umulig å verifisere^[Noen lesere er godt kjent med diskusjoner om "positivisme" i samfunnsvitenskapen der Popper noen ganger settes i den båsen. Det er derimot helt på det rene at Popper var en av de som bidro mest til å avlive den andre Wienerskolens positivisme. Senere såkalt positivismestrid fremstår som ganske surrete greier som først og fremst er preget av en stråmannsargumentasjon. Når man i dag bruker begrepet "positivist" er vel det mest å regne som et udefinert akademisk skjellsord, og man burde nok heller si "dust" hvis det er det man faktisk mener.] en teori. Derimot går det an å 
+
+::: {#-}
+**Severity Requirement (weak)**: One does not have evidence for a claim if nothing has been done to rule out ways the claim may be false. If data $X$ agree with a claim $C$ but the method was practically incapable of finding flaws with $C$ even if they exist, then $X$ is poor evidence for $C$.
+:::
+
+::: {#-}
+**Severity (strong)**: We have evidence for a claim $C$ just to the $C$ extent it survives a stringent scrutiny. If $C$ passes a test that was highly capable of finding flaws or discrepancies from $C$, and yet none or few are found, then the passing result, $X$, is an indication of, or evidence for, $C$.
+:::
+
+Det er mye mer å si om dette, men la i hvert fall én ting være klart: Det kreves vesentlig mer enn å teste hvorvidt en $\beta$ i en regresjon er statistisk signifikant eller ikke. 
+
+Svært mange empiriske studier som påstår at de tester en teori, men i praksis ikke viser annet enn at empirien er konsistent med teorien, uten at det er åpenbart at fremgangsmåten kunne vist noe annet. Slike studier er rett og slett ikke en test. 
+
+Dette gjelder altså for både deskriptive og kausale studier. En pålitelig estimert kausaleffekt som er konsistent med det teorien tilsa er ikke i seg selv veldig interessant. Det er selvsagt godt å vite at teorien er konsistent med den empiriske verden. Det samme gjelder for deskriptive funn. 
+
+En mulig løsning er selvsagt å fortegne andre teorier og tilbakevise en stråmann. Det kan se fint ut, men er ikke et virkelig bidrag. 
+
+Men igjen: rene deskriptive studier er også viktige i seg selv. Problemet oppstår først og fremst når man tolker resultatene langt videre enn det er grunnlag for. Det gjelder enten det er snakk om generalisering, kausalitet eller substansiell teori. 
+
+
+## Eksplorerende og konfirmerende analyser
+Konfirmerende analyser tilsier i stor grad teoritesting som beskrevet ovenfor. Det krever altså spesifikke hypoteser, som ikke bare er tydelig på teoretiske hypoteser, men også hvordan det skal estimeres. 
+
+### Eksplorerende analyser
+Eksplorerende analyser har per definisjon ikke som formål verken å estimere effekter eller teste teorier. Her handler det om å "røre rundt i gryta" og se hva som dukker opp. 
+
+
+### Replikasjon på nye data
+Eksplorerende analyser har det problemet at når man fisker rundt etter sammenhenger, så er det vanskelig å vite hva som er tilfeldigheter og hva som er systematisk. Her vil nettopp ikke statistiske tester være til hjelp fordi man allerede har brutt forutsetningene for de statistiske testene! Altså: Hvis man gjør mange tester må vi forvente av 5% av dem er statistisk signifikante med $p < 0.05$ og hvis man bare presenterer disse, så er man på ville veier. 
+
+Men eksplorerende analyser kan absolutt være hypotesegenererende og etterfølges av konfirmerende studier. Faktisk bør de jo det. 
+
+
+
+## Policy implications
+
+I et  annet arbeid beskriver Berk eksperimenter som "the bronze standard", men medet tilleggsargument at det ikke er noen på øvrige pallplasser: *ingen får gull og søv*.
+
+Cartwright & Hardie beskriver i boken "Evidence-Based Policy. A Practical Guide to Doing It Better." noen grunnleggende utfordringer for hva som er er politikk-implikasjoner. 
+
+Husk nivå-IV av regresjonsanalyse: Hvis en kausal effekt gjelder for en veldefinert populasjon og setting, så vil vi kunne forutsi hva som vil kunne skje når man implementerer et tilsvarende tiltak i en slik setting eller populasjon. 
+
+
+
+
+

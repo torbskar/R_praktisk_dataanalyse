@@ -1,0 +1,66 @@
+# Innlesning av data
+
+Data kan være lagret i mange ulike formater, men det er også problemstillinger knyttet til *hvordan* dataene er lagret i et gitt format. Dette handler delvis om hvordan noen har valgt å lagre og distribuere data, ikke bare om dataformatet i seg selv. 
+
+Det kan være vanskelig å skille mellom hvorvidt utfordringene du møter skyldes dataformatet, softwaren man bruker eller valg andre har tatt. Det kan være flere av disse, men som hovedregel er problemet at data ofte ikke er distribuert i et universelt format. Permanent lagring og distribusjon av data er krevende, men ikke temaet her. 
+
+
+Uansett: du vil ofte få data i et format som ikke er tilrettelagt verken i eller for R. Å gjøre om data fra et format til et annet kan være en avgjørende oppgave for å få gjort noe som helst. 
+
+Dette kan være krøkete og du har virkelig muligheten til å kløne det til skikkelig. For at du skal slippe det gir dette kapittelet en oppskrift for å håndtere slike data slik at du kan jobbe videre med dem i R på en hensiktsmessig måte. 
+
+
+I tillegg vil de levere en *flat fil* som typisk er *comma separated variables* (csv). I de førstnevnte vil metadata være integrert, mens i csv er det bare kodene og metadata må slås opp i dokumentasjonen. 
+
+Det er også noen utfordringer i R for håndtering av factor-variable med lange (noen ganger veldig lange) 'labler'. Det gis noen løsninger på det også som gjør kodingen håndterbar. 
+
+
+
+## Mest vanlige dataformater for R
+
+### csv-filer 
+
+
+### rds
+
+
+### Varianter: qs, fst og slikt 
+
+
+### Excel
+
+
+
+## Laste workspace med `load()` 
+
+
+
+## SSBs statistikkbank: bruk API
+
+
+
+## Import format fra andre statistikkpakker 
+
+
+### Stata
+
+
+### Spss
+
+
+### SAS 
+
+
+
+## Arrow: store filer og mer
+Hvis du har skikkelig store datafiler kan du få noen praktiske problemer. En ting er at dataene er lagret i minnet på datamaskinen, men det kan uansett ta lang tid å lese dataene inn. Arrow-pakken gjør R i stand til å lese filer i formatene parquet og feather, samt rask innlesning av csv-filer.  
+
+Hvis du jobber med registerdata (som en del samfunnsvitere gjør) så kan dette være formater du har nytte av. 
+
+
+
+## Håndtere metadata med *lookup* tabeller
+
+https://www.infoworld.com/article/3323006/do-more-with-r-quick-lookup-tables-using-named-vectors.html
+
+

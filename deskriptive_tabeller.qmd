@@ -1,0 +1,17 @@
+# Deskriptive tabeller
+
+## Manuelle tabeller med {dplyr}
+
+Det er ofte mer effektivt å jobbe med
+
+## Pakken {gtsummary}
+
+## Pakken {datasummary}
+
+## Layout med {gt}
+
+Pakken {gt} står for "grammar of tables" og er bygget opp som et eget språk
+
+## Eksport til MS Word
+
+Vi fokuserer her på eksport av resultater til tekstbehandlingsprogrammet Word. Grunnen er at dette er det mest brukte. R er også svært godt egnet til å eksportere til html, $\LaTex$ og annet, men de som bruker slike formater vil nok klare å finne ut av dette selv.

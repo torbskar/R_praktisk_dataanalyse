@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Veldig praktisk dataanalyse med R - 1&nbsp; Sosiologisk teori og regresjonsanalyse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./innlesning_data.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Veldig praktisk dataanalyse med R</span>
+    </a>
+  </div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sosiologisk teori og regresjonsanalyse</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Forord</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regsjonsanalyse_tolkning.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sosiologisk teori og regresjonsanalyse</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./innlesning_data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Innlesning av data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./innlesning_stata.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Spesielt om data fra Stata og SPSS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./oversikt_datasettet.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Få oversikt over datasettet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./grafikk.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Grafikk</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deskriptive_tabeller.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deskriptive tabeller</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./omkode_factor.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Omkoding av factor-variable</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./omkode_labelled.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Omkoding av labelled-variable i innlesning fra Stata</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#hva-er-regresjon" id="toc-hva-er-regresjon" class="nav-link active" data-scroll-target="#hva-er-regresjon"><span class="toc-section-number">1.1</span>  Hva er regresjon?</a></li>
+  <li><a href="#tre-nivåer-av-regresjonanalyse" id="toc-tre-nivåer-av-regresjonanalyse" class="nav-link" data-scroll-target="#tre-nivåer-av-regresjonanalyse"><span class="toc-section-number">1.2</span>  Tre nivåer av regresjonanalyse</a></li>
+  <li><a href="#to-nivåer-av-teoretisering-bakover-og-forover" id="toc-to-nivåer-av-teoretisering-bakover-og-forover" class="nav-link" data-scroll-target="#to-nivåer-av-teoretisering-bakover-og-forover"><span class="toc-section-number">1.3</span>  To nivåer av teoretisering: bakover og forover</a></li>
+  <li><a href="#substansiell-teori---er-det-gjort-en-test" id="toc-substansiell-teori---er-det-gjort-en-test" class="nav-link" data-scroll-target="#substansiell-teori---er-det-gjort-en-test"><span class="toc-section-number">1.4</span>  Substansiell teori - er det gjort en <em>test</em>?</a></li>
+  <li><a href="#eksplorerende-og-konfirmerende-analyser" id="toc-eksplorerende-og-konfirmerende-analyser" class="nav-link" data-scroll-target="#eksplorerende-og-konfirmerende-analyser"><span class="toc-section-number">1.5</span>  Eksplorerende og konfirmerende analyser</a></li>
+  <li><a href="#policy-implications" id="toc-policy-implications" class="nav-link" data-scroll-target="#policy-implications"><span class="toc-section-number">1.6</span>  Policy implications</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sosiologisk teori og regresjonsanalyse</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Hovedpunkter:</p>
+<ul>
+<li>Berk’s tre nivåer av regresjonanalyse - og det fjerde</li>
+<li>Policy implications</li>
+<li>Teori: fremover og bakover teoretisering / eksplorerende og konfirmerende</li>
+<li>Severe testing - egenskap ved teori, ikke med type metode</li>
+</ul>
+<section id="hva-er-regresjon" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="hva-er-regresjon"><span class="header-section-number">1.1</span> Hva er regresjon?</h2>
+<p>Enhver lærebok vil kunne gi en teknisk forklaring på hva regresjonsanalyse er, men det er verd å ta et litt mindre teknisk perspektiv i dette kapittelet.</p>
+<p>En regresjonsmodell er typisk på formen</p>
+<p><span class="math display">\[ f(y) = g(x) \]</span> der altså utfallsvariabelen, <span class="math inline">\(y\)</span>, er en funksjon av en eller flere forklaringsvariable, <span class="math inline">\(x\)</span>. Denne funksjonen av <span class="math inline">\(x\)</span> vil ofte ha en lineær spesifikasjon av typen $ g(x) = + X + $, men kan også være ikke-lineær på ulikt vis eller inneholde en rekke ekstra og kompliserende ledd.</p>
+<p>Det viktige her er at en regresjonsmodell - uansett hvilke statistiske krumspring som ellers gjøres - først og fremst beskriver hvordan utfallsvariabelen <span class="math inline">\(y\)</span> varierer med prediktorene <span class="math inline">\(x\)</span>. Vi kan også kalle dette den betingede fordeling av <span class="math inline">\(y\)</span>. Oftest er det hvordan <em>gjennomsnittet</em> av <span class="math inline">\(y\)</span> som beskrives.</p>
+<p>Dermed er også en regresjonsmodell av denne typen en <em>oppsummering</em> av noen hovedtrender i dataene. Regresjonsparametrene <span class="math inline">\(\beta\)</span> beskriver disse trendene, først og fremst hvor mye <span class="math inline">\(y\)</span> endrer seg når <span class="math inline">\(x\)</span> endrer seg. For kategoriske <span class="math inline">\(x\)</span> kan man si at <span class="math inline">\(\beta\)</span> beskriver forskjell i <span class="math inline">\(y\)</span> mellom gruppene i <span class="math inline">\(x\)</span>.</p>
+<p>Det er ikke så mye mer, egentlig. Det er ingenting i det tekniske ved regresjonsanalysen som sier noe som helst om <em>effekter</em>. Det er heller ingenting i dette som sier noe om hvorvidt resultatene <em>generaliserer</em> til andre data eller settinger. Hvorvidt disse tolkningene er rimelige (effekter eller generalisering) avhenger av hvordan dataene ble til. Eller sagt på en annen måte: tolkningen avhenger av hva som var forskningsdesignet i utgangspunktet.</p>
+<p>Uansett hvilke data man analyserer kan man gjøre regneøvelser om standardfeil og teste signifikans osv. Standard lærebøker vil presentere dette som hypotesetesting der man først formulerer en null-hypotese og en alternativ hypotese, så gir f.eks. en t-test svaret på hvilken av disse man bør velge. Denne formen for hypotesetesting er imidlertid <em>ikke</em> i seg selv en test av substansiell teori (f.eks. sosiologisk teori) på noen meningsfull måte. For at en statistisk test av en regresjonsparameter skal være informativ om substansiell teori må medfølge en <em>teoretisk argument</em> om hvorfor akkurat denne parameteren er informativ. Sagt på en annen måte: det kreves informasjon fra <em>utenfor data</em> som gir resultatet mening.</p>
+<p>Vi står altså i en situasjon der tolkningen av data i moderat grad er avhengig av data, men av informasjon utenfor data.</p>
+</section>
+<section id="tre-nivåer-av-regresjonanalyse" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="tre-nivåer-av-regresjonanalyse"><span class="header-section-number">1.2</span> Tre nivåer av regresjonanalyse</h2>
+<p>Richard Berk beskriver i sin lærebok tre nivåer av regresjonsanalyse basert på hvordan dataene ble til. Dette er et godt utgangspunkt som burde klargjøre betydelig, i hvert fall som et først skritt.</p>
+<section id="nivå-i-ikke-tilfeldig-utvalg-fra-en-veldefinert-populasjon" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="nivå-i-ikke-tilfeldig-utvalg-fra-en-veldefinert-populasjon"><span class="header-section-number">1.2.1</span> Nivå I: Ikke tilfeldig utvalg fra en veldefinert populasjon</h3>
+<p>Grunnlaget for statistisk tolkning (sannsynligheter, p-verdier og sånn) er at dataene er en tilfeldig realisering av en underliggende sann verdi. Typisk betyr dette bare at man har trukket et tilfeldig utvalg fra en populasjon. Da vil man få et godt mål på f.eks. gjennomsnittsverdi i populasjonen, men på grunn av tilfeldighet vil det være en feilmargin på denne målingen.</p>
+<p>Det avgjørende er altså at det finnes en veldefinert populasjon som det kan generaliseres til. Grunnen til å bruke begrepet <em>veldefinert</em> er at det må være rimelig spesifisert.</p>
+<p>Hvis dataene <em>ikke</em> er fra en veldefinert populasjon kalles dette noen ganger for <em>convenience sample</em>. Altså, at man gjorde et uttrekk av beleilighetsgrunner, men uten at det var en veldefinert populasjon.</p>
+<p>Et eksempel kan være en arbeidsmiljøundersøkelse i en bestemt bedrift. Det skal litt til at disse resultatene skal gjelde utover denne bedriften. Man kan selvsagt argumentere for at erfaringene gjelder med generelt, men en slik slutning vil da hvile først og fremst på disse argumentene - ikke på statistiske utregninger.</p>
+<p>Det kan være veldig nyttig å analysere slike data, og det kan bringe innsikt og kunnskaper. Men med slike data gir det ikke mye mening å regne på statistisk usikkerhet. Hvis man ikke skal si noe utover de dataene man har (ikke generalisere), så er det heller ikke denne typen usikkerhet i målingene.</p>
+<p>Slike ikke-tilfeldige utvalg kan betraktes nærmest som case-studier. En dataanalyse vil gi oss kunnskaper om de erfaringene som gjøre akkurat der. Størrelsen på datasettet kan gi oss mer pålitelig informasjon om dette caset, men hjelper ikke for å generalisere utover caset.</p>
+</section>
+<section id="nivå-ii-tilfeldig-utvalg-fra-en-veldefinert-populasjon" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="nivå-ii-tilfeldig-utvalg-fra-en-veldefinert-populasjon"><span class="header-section-number">1.2.2</span> Nivå II: Tilfeldig utvalg fra en veldefinert populasjon</h3>
+</section>
+<section id="nivå-iii-estimering-av-kausale-effekter" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="nivå-iii-estimering-av-kausale-effekter"><span class="header-section-number">1.2.3</span> Nivå III: Estimering av kausale effekter</h3>
+<p>Fra et teknisk perspektiv er det ingenting som skiller studier av eksperimenter fra observasjonsstudier. De samme regresjonsmodellene kan estimeres og de samme utregningene av usikkerhet. Hva som bestemmer tolknigen (og hvorvidt modellspesifikasjonen er rimelig etc) avhenger av forskningsdesignet. Kort sagt kreves det et eksperiment. Hvis man har en <em>treatment</em>-gruppe og en kontrollgruppe, så vil <span class="math inline">\(\beta\)</span> beskrive forskjellen mellom disse gruppene som i andre typer data. Det som gir <span class="math inline">\(\beta\)</span> en <em>kausal</em> tolkning er om dataene tilfredsstiller kravene til et eksperiment.</p>
+</section>
+<section id="oppsummerende-og-et-nivå-iv" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="oppsummerende-og-et-nivå-iv"><span class="header-section-number">1.2.4</span> Oppsummerende og et nivå IV:</h3>
+<p>I Berk sin fremstilling av de tre nivåene får man en følelse av at den vitenskapelige verdien øker ved hvert nivå. Mange vil da også mene akkurat det. Men logisk sett er det litt mer tvetydig enn som så.</p>
+<p>Vi har snakket om to dimensjoner: kausalitet (ja/nei) og generalisering (ja/nei). Dette gir fire logisk mulige kombinasjoner.</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<div id="tbl-" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1.1: Nivåer av regresjonsanalyse og hvor vanlige de er</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 38%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Ikke tilfeldig utvalg fra veldefinert populasjon</th>
+<th>Tilfeldig utvalg fra veldefinert populasjon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deskriptiv</td>
+<td>Overraskende mange</td>
+<td>Det aller meste</td>
+</tr>
+<tr class="even">
+<td>Kausal</td>
+<td>Mye, men burde nok vært mer</td>
+<td>Ganske sjelden</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Jeg har ingen empiri for å si hvor vanlig hver enkelt type analyse er. Men jeg tror det nokså omtrentlige angivelsen i tabellen er ganske riktig, basert på egen erfaring fra studier jeg har lest og presentasjoner jeg har sett.</p>
+<p>I Berk sin fremstilling er Nivå III hele nederste rad, men da er det altså ikke gjort skille mellom om resultatene kan generaliseres videre eller ikke. Et slik skille bør man nok gjøre.</p>
+<p>Eksperimenter omtales noen ganger - og i noen fagmiljøer - som <em>gullstandarden</em>. Men altså: ethvert eksperiment kan ikke være en gullstandard, ikke engang når formålet er å estimere kausaleffekter. Nivå IV er i så fall det vi ser etter, og ikke nivå III.</p>
+</section>
+<section id="estimere-effekter-og-forklare-sammenhenger" class="level3" data-number="1.2.5">
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="estimere-effekter-og-forklare-sammenhenger"><span class="header-section-number">1.2.5</span> Estimere effekter og forklare sammenhenger</h3>
+<p>Mange diskusjoner om kvantitative metoder og hva som er godt og dårlig ender opp i en diskusjon om kausalitet, og da spesifikt i rammeverket som har utgangspunkt i et kontrafaktisk perspektiv. Man sammenligner det som har skjedd med det som ville skjedd hvis noe annet ikke hadde skjedd. Det er altså den eksperimentelle metode, inkludert kvasi-eksperimentelle design.</p>
+<p>Merk at i det ovenstående er det understreket at det er <em>hvordan dataene har blitt til</em> som er bestemmende for hvordan resultatene kan tolkes. For at et <em>estimat</em> skal tolkes kausalt kreves det et eksperiment. Dette burde egentlig være ukontroversielt.</p>
+<p>Det som av noen blir omtalt som <em>kontrollvariabelmetoden</em> er en dårlig erstatning for et kausalt design. Logikken er at man kan eliminere betydningen av andre observerte kjennetegn (dvs variable), så kan den gjenstående “effekten” i hvert fall ikke skyldes seleksjon på de variablene man har kontrollert for. Dette leder lett til å tro at hvis man bare kontrollerer for så mye som mulig, så kommer man stadig nærmere en kausal effekt.</p>
+<p>Det nokså åpenbare problemet med en slik strategi er at det finnes en uendelig mengde faktorer det kan være seleksjon på, og den gjenstående “effekten” kan fremdeles være spuriøs. <em>Kontrollvariabelmetoden</em> er altså en dårlig strategi hvis man ønsker et kausalt estimat. Det man derimot kan gjøre - med hell - er å <em>beskrive</em> noen sammenhenger og utelukke noen alternative forklaringer. Hvorvidt dette er en god strategi vil da avhenge av det teoretiske argumentet som begrunner analysen.</p>
+<p>Men det er ikke alltid målet er <em>estimere</em> en effekt selv om den underliggende interessen er i en effekt. Man kan ha en <em>teori</em> som forklarer hvordan <span class="math inline">\(X\)</span> påvirker <span class="math inline">\(Y\)</span> uten at en kausal faktor lar seg estimere direkte. Eller i hvert fall ikke med de dataene man har. Dette er noe annet enn statistisk tolkning, men er en substansiell tolkning som går utover det data kan si i seg selv. Det man kan oppnå er å si om data er <em>konsistent</em> med teorien, eller om man kan <em>avvise</em> teorien, eller <em>sannsynliggjøre</em> teorien.</p>
+</section>
+</section>
+<section id="to-nivåer-av-teoretisering-bakover-og-forover" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="to-nivåer-av-teoretisering-bakover-og-forover"><span class="header-section-number">1.3</span> To nivåer av teoretisering: bakover og forover</h2>
+<p>Gelman &amp; … diskuterer kausaleffekter spesifikt, men argumentet gjelder mer generelt:</p>
+<section id="bakover-hvordan-kan-det-ha-seg" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="bakover-hvordan-kan-det-ha-seg"><span class="header-section-number">1.3.1</span> Bakover: Hvordan kan det ha seg??</h3>
+<p>Noen ganger er utgangspunktet et empirisk fenoment og man søker forklaring på hvordan det kan ha seg at det ble slik. Utfallet er altså allerede gitt og jobben må bestå i å nøste seg bakover for å finne en forklaring på hvorfor det ble slik.</p>
+</section>
+<section id="forover-hva-skjer-hvis" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="forover-hva-skjer-hvis"><span class="header-section-number">1.3.2</span> Forover: Hva skjer hvis…??</h3>
+<p>Noen ganger er spørsmålet mer om hva som skjer hvis man endrer på forholdene. Dette er normalsituasjonen for enhver byråkrat eller politiker som skal iverksette noe - som de jo håper løser et problem eller gjør noe bedre. Det finnes da ingen vei utenom enn å gjøre endringen og undersøke hva som skjer. Forskerens jobb er da å estimere effekten på en slik måte at man kan utelukke at endringen skyldes helt andre ting.</p>
+</section>
+</section>
+<section id="substansiell-teori---er-det-gjort-en-test" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="substansiell-teori---er-det-gjort-en-test"><span class="header-section-number">1.4</span> Substansiell teori - er det gjort en <em>test</em>?</h2>
+<p>Man ser ganske ofte både studentarbeider og vitenskapelige publikasjoner som setter opp formelle hypoteser om hva de forventer å finne. Gjerne skrives det på formen</p>
+<div id="-">
+<p><span class="math inline">\(H_1\)</span>: Det er en positiv sammenheng mellom <span class="math inline">\(X\)</span> og <span class="math inline">\(Y\)</span>.<br>
+</p>
+</div>
+<div id="-">
+<p><span class="math inline">\(H_2\)</span>: Sammenheng mellom <span class="math inline">\(X\)</span> og <span class="math inline">\(Y\)</span> er sterkere for gruppe <span class="math inline">\(Z_1\)</span> enn gruppe <span class="math inline">\(Z_2\)</span>.</p>
+</div>
+<p>Dette ligner tilforlatelig på slik man lærer å sette opp null-hypoteser og alternative hypoteser i standard kurs i statistikk. Hvis null-hypotesen ikke er oppgitt, så er det implisitt at det ikke er en slik sammenheng - altså negasjonen.</p>
+<p>Dette er greit nok og er en tydeliggjøring av de forventningene forskeren har. Men det er <em>ikke</em> i seg selv en test av substansiell teori. For å skjønne dette må vi ta en liten runde på hva det vil si å teste en teori.</p>
+<section id="severe-testing" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="severe-testing"><span class="header-section-number">1.4.1</span> Severe testing</h3>
+<p>Mayo viser til det Popperske perspektivet på falsifisering. Logisk sett er det umulig å verifisere<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> en teori. Derimot går det an å</p>
+<div id="-">
+<p><strong>Severity Requirement (weak)</strong>: One does not have evidence for a claim if nothing has been done to rule out ways the claim may be false. If data <span class="math inline">\(X\)</span> agree with a claim <span class="math inline">\(C\)</span> but the method was practically incapable of finding flaws with <span class="math inline">\(C\)</span> even if they exist, then <span class="math inline">\(X\)</span> is poor evidence for <span class="math inline">\(C\)</span>.</p>
+</div>
+<div id="-">
+<p><strong>Severity (strong)</strong>: We have evidence for a claim <span class="math inline">\(C\)</span> just to the <span class="math inline">\(C\)</span> extent it survives a stringent scrutiny. If <span class="math inline">\(C\)</span> passes a test that was highly capable of finding flaws or discrepancies from <span class="math inline">\(C\)</span>, and yet none or few are found, then the passing result, <span class="math inline">\(X\)</span>, is an indication of, or evidence for, <span class="math inline">\(C\)</span>.</p>
+</div>
+<p>Det er mye mer å si om dette, men la i hvert fall én ting være klart: Det kreves vesentlig mer enn å teste hvorvidt en <span class="math inline">\(\beta\)</span> i en regresjon er statistisk signifikant eller ikke.</p>
+<p>Svært mange empiriske studier som påstår at de tester en teori, men i praksis ikke viser annet enn at empirien er konsistent med teorien, uten at det er åpenbart at fremgangsmåten kunne vist noe annet. Slike studier er rett og slett ikke en test.</p>
+<p>Dette gjelder altså for både deskriptive og kausale studier. En pålitelig estimert kausaleffekt som er konsistent med det teorien tilsa er ikke i seg selv veldig interessant. Det er selvsagt godt å vite at teorien er konsistent med den empiriske verden. Det samme gjelder for deskriptive funn.</p>
+<p>En mulig løsning er selvsagt å fortegne andre teorier og tilbakevise en stråmann. Det kan se fint ut, men er ikke et virkelig bidrag.</p>
+<p>Men igjen: rene deskriptive studier er også viktige i seg selv. Problemet oppstår først og fremst når man tolker resultatene langt videre enn det er grunnlag for. Det gjelder enten det er snakk om generalisering, kausalitet eller substansiell teori.</p>
+</section>
+</section>
+<section id="eksplorerende-og-konfirmerende-analyser" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="eksplorerende-og-konfirmerende-analyser"><span class="header-section-number">1.5</span> Eksplorerende og konfirmerende analyser</h2>
+<p>Konfirmerende analyser tilsier i stor grad teoritesting som beskrevet ovenfor. Det krever altså spesifikke hypoteser, som ikke bare er tydelig på teoretiske hypoteser, men også hvordan det skal estimeres.</p>
+<section id="eksplorerende-analyser" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="eksplorerende-analyser"><span class="header-section-number">1.5.1</span> Eksplorerende analyser</h3>
+<p>Eksplorerende analyser har per definisjon ikke som formål verken å estimere effekter eller teste teorier. Her handler det om å “røre rundt i gryta” og se hva som dukker opp.</p>
+</section>
+<section id="replikasjon-på-nye-data" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="replikasjon-på-nye-data"><span class="header-section-number">1.5.2</span> Replikasjon på nye data</h3>
+<p>Eksplorerende analyser har det problemet at når man fisker rundt etter sammenhenger, så er det vanskelig å vite hva som er tilfeldigheter og hva som er systematisk. Her vil nettopp ikke statistiske tester være til hjelp fordi man allerede har brutt forutsetningene for de statistiske testene! Altså: Hvis man gjør mange tester må vi forvente av 5% av dem er statistisk signifikante med <span class="math inline">\(p &lt; 0.05\)</span> og hvis man bare presenterer disse, så er man på ville veier.</p>
+<p>Men eksplorerende analyser kan absolutt være hypotesegenererende og etterfølges av konfirmerende studier. Faktisk bør de jo det.</p>
+</section>
+</section>
+<section id="policy-implications" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="policy-implications"><span class="header-section-number">1.6</span> Policy implications</h2>
+<p>I et annet arbeid beskriver Berk eksperimenter som “the bronze standard”, men medet tilleggsargument at det ikke er noen på øvrige pallplasser: <em>ingen får gull og søv</em>.</p>
+<p>Cartwright &amp; Hardie beskriver i boken “Evidence-Based Policy. A Practical Guide to Doing It Better.” noen grunnleggende utfordringer for hva som er er politikk-implikasjoner.</p>
+<p>Husk nivå-IV av regresjonsanalyse: Hvis en kausal effekt gjelder for en veldefinert populasjon og setting, så vil vi kunne forutsi hva som vil kunne skje når man implementerer et tilsvarende tiltak i en slik setting eller populasjon.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Noen lesere er godt kjent med diskusjoner om “positivisme” i samfunnsvitenskapen der Popper noen ganger settes i den båsen. Det er derimot helt på det rene at Popper var en av de som bidro mest til å avlive den andre Wienerskolens positivisme. Senere såkalt positivismestrid fremstår som ganske surrete greier som først og fremst er preget av en stråmannsargumentasjon. Når man i dag bruker begrepet “positivist” er vel det mest å regne som et udefinert akademisk skjellsord, og man burde nok heller si “dust” hvis det er det man faktisk mener.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Forord</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./innlesning_data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Innlesning av data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
